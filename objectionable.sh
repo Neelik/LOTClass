@@ -6,7 +6,7 @@ TRAIN_CORPUS=train.txt
 TEST_CORPUS=test.txt
 TEST_LABEL=test_labels.txt
 MAX_LEN=200
-TRAIN_BATCH=16
+TRAIN_BATCH=32
 ACCUM_STEP=4
 EVAL_BATCH=128
 GPUS=1
@@ -21,7 +21,8 @@ LABEL_NAMES_GOOGLE_ID=
 python ${COLAB}datasets/${DATASET}/get_data.py --train_labels_id ${TRAIN_GOOGLE_ID} \
                     --train_labels_id ${TRAIN_LABELS_GOOGLE_ID} \
                     --train_id ${TRAIN_GOOGLE_ID} --test_labels_id ${TEST_LABELS_GOOGLE_ID} \
-                    --test_id ${TEST_GOOGLE_ID} --label_names_id ${LABEL_NAMES_GOOGLE_ID}
+                    --test_id ${TEST_GOOGLE_ID} --label_names_id ${LABEL_NAMES_GOOGLE_ID} \
+                    --dataset ${DATASET}
 python ${COLAB}src/train.py --dataset_dir ${COLAB}datasets/${DATASET}/ --label_names_file ${LABEL_NAME_FILE} \
                     --train_file ${TRAIN_CORPUS} \
                     --test_file ${TEST_CORPUS} --test_label_file ${TEST_LABEL} \
